@@ -4,13 +4,11 @@ package com.lanchonete.controller;
 import com.lanchonete.dto.lanche.LancheExibitionDto;
 import com.lanchonete.dto.lanche.LancheMapper;
 import com.lanchonete.entity.Lanche;
+import com.lanchonete.repository.LancheRepository;
 import com.lanchonete.service.LancheService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,6 +18,7 @@ import java.util.List;
 public class LancheController {
 
     private final LancheService lancheService;
+    private final LancheRepository repository;
 
     @GetMapping
     public ResponseEntity<List<LancheExibitionDto>> showLanches(){
@@ -35,5 +34,6 @@ public class LancheController {
         Lanche lanche = lancheService.show(id);
         return ResponseEntity.ok(LancheMapper.toDto(lanche));
     }
+
 
 }
