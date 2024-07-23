@@ -1,10 +1,7 @@
 package com.lanchonete.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -21,6 +18,7 @@ public class Lanche {
 
     private String nome;
 
+    @Column(length = 500)
     private String descricao;
 
     private Double preco;

@@ -12,7 +12,7 @@ public class PedidoLancheMapper {
 
     public static PedidoLanche toEntity(PedidoLancheCreateDto pedidoLancheCreateDto){
         if (pedidoLancheCreateDto == null)return null;
-        return PedidoLanche.builder().qtdLanches(pedidoLancheCreateDto.getQtdLanches()).observacao(pedidoLancheCreateDto.getObservacao()).totalPreco(pedidoLancheCreateDto.getTotalPreco()).build();
+        return PedidoLanche.builder().observacao(pedidoLancheCreateDto.getObservacao()).totalPreco(pedidoLancheCreateDto.getTotalPreco()).build();
     }
 
 

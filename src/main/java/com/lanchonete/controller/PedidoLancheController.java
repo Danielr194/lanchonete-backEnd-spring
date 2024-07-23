@@ -21,7 +21,7 @@ public class PedidoLancheController {
     private final PedidoLancheService service;
 
     @PostMapping
-    public ResponseEntity<PedidoLancheExibitionDto> create(PedidoLancheCreateDto dto){
+    public ResponseEntity<PedidoLancheExibitionDto> create(@RequestBody PedidoLancheCreateDto dto){
         PedidoLanche pedidoLancheNovo = PedidoLancheMapper.toEntity(dto);
         PedidoLanche pedidoLanche = service.create(pedidoLancheNovo, dto.getLancheId(), dto.getPedidoId());
         URI uri = URI.create("/pedidosLanches/"+ pedidoLanche.getId());
