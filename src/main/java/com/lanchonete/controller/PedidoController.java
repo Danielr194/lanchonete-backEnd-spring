@@ -1,16 +1,14 @@
 package com.lanchonete.controller;
 
 
+import com.lanchonete.dto.Pedido.PedidoCreateDto;
 import com.lanchonete.dto.Pedido.PedidoExibitionDto;
 import com.lanchonete.dto.Pedido.PedidoMapper;
 import com.lanchonete.entity.Pedido;
 import com.lanchonete.service.PedidoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,6 +18,13 @@ import java.util.List;
 public class PedidoController {
 
     private final PedidoService service;
+
+    @PostMapping
+    public ResponseEntity<Pedido> create(@RequestBody PedidoCreateDto pedido){
+        Pedido novoPedido = PedidoMapper.toEntity(pedido);
+        Pedido pedidoSalvo = service.create(novoPedido,pedido.getUsuarioId());
+        return ResponseEntity.created(null).body(pedidoSalvo);
+    }
 
     @GetMapping("buscarPorUsuario/{id}")
     public ResponseEntity<List<PedidoExibitionDto>> showPedidos(@PathVariable Long id){

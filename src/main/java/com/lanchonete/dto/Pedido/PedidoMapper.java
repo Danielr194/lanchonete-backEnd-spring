@@ -1,5 +1,6 @@
 package com.lanchonete.dto.Pedido;
 
+import com.lanchonete.dto.usuario.UsuarioDto;
 import com.lanchonete.entity.Pedido;
 import com.lanchonete.entity.Usuario;
 
@@ -17,7 +18,12 @@ public class PedidoMapper {
         return pedidos.stream().map(PedidoMapper::toDto).toList();
     }
 
-    public static PedidoExibitionDto.UsuarioDto usuarioDto(Usuario usuario){
-        return PedidoExibitionDto.UsuarioDto.builder().id(usuario.getId()).email(usuario.getEmail()).nome(usuario.getNome()).build();
+    public static UsuarioDto usuarioDto(Usuario usuario){
+        return UsuarioDto.builder().id(usuario.getId()).email(usuario.getEmail()).nome(usuario.getNome()).build();
+    }
+
+    public static Pedido toEntity(PedidoCreateDto pedidoCreateDto){
+        if (pedidoCreateDto == null)return null;
+        return Pedido.builder().data(pedidoCreateDto.getData()).build();
     }
 }
