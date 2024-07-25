@@ -52,7 +52,7 @@ class UsuarioServiceTest {
 
     @Test
     @DisplayName("Criar usuario com sucesso")
-    void cenariocriarSucesso(){
+    void cenarioCriarSucesso(){
         Usuario novoUsuario = Usuario.builder().senha("Daniel@19").email("dlnsantos19@gmail.com")
         .nome("Daniel Rocha dos Santos")
         .cpf("44581975840")

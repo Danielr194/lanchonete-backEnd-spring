@@ -33,8 +33,8 @@ public class PedidoService {
     }
 
     public List<Pedido> getPedidos(Long idUsuario){
-
-        List<Pedido> pedidos = pedidoRepository.findByUsuarioIdIs(usuarioService.getUsuario(idUsuario));
+        Usuario usuario =usuarioService.getUsuario(idUsuario);
+        List<Pedido> pedidos = pedidoRepository.findByUsuarioIdIs(usuario);
         return pedidos;
     }
 
